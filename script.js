@@ -38,7 +38,7 @@ function loadTransactionDetails(transaction){
     item.innerHTML =`
      ${transaction.description}
      <span>${sign} ${Math.abs(transaction.amount)}</span>
-     <button class="btn-edit">✏️</button>
+     
      <button class="btn-del" onclick='removeTrans(${transaction.id})'>x</button>
     `
     transcationList.appendChild(item)
