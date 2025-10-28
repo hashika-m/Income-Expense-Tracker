@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>I&E tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- ledger user inputs -->
+        <div class="ledger">
+            <h2>Income & Expense tracker</h2>
+            <h3>💰Your Balance</h3>
+            <h1 id="balance">₹ 0.00</h1>
+            <div class="inc-exp-container">
+                <div class="inc">
+                    <h1>💵Income</h1>
+                    <p id="inc-amt" class="amt plus">₹ 0.00</p>
+                </div>
+                <div class="exp">
+                    <h1>💸Expense</h1>
+                    <p id="exp-amt" class="amt minus">₹ 0.00</p>
+                </div>
+                
+            </div>
+            <form  action="#" id="form">
+                    <label for="desc">Description</label>
+                    <input type="text" name="desc" id="desc" placeholder="Enter Description" >
+                    <label for="amount">Amount</label>
+                    <input type="number" name="amount" id="amount" placeholder="Enter Description" >
+                    <div class="buttons">
+                        <button class="Submit-btn"   type="submit">Add transaction</button>
+                       <button class="Submit-btn" id="reset-btn"  type="reset">Reset</button>
+                    </div>   
+
+            </form>
+        </div>
+        <!-- transcation section -->
+        <div class="transaction">
+            <h2>transaction</h2>
+            <div class="filters" id="filters">
+                <div>
+                    <input type="radio" name="filter" value="all" id="all" checked>All
+                </div>
+                <div>
+                    <input type="radio" name="filter" value="income"  id="inc-radio">Income
+                </div>
+                <div>
+                    <input type="radio" name="filter" value="expense" id="exp-radio">Expense
+                </div>
+            </div>
+            <ul class="trans" id="trans">
+                <li class="inc">Salary
+                    <span>10000</span>
+                    <button class="btn-del">x</button>
+                    <button class="btn-edit">✏️</button>
+                </li>
+                 <li class="exp">Book
+                    <span>-100</span>
+                    <button class="btn-del">x</button>
+                    <button class="btn-edit">✏️</button>
+                </li>
+                <li class="exp">Book
+                    <span>-700</span>
+                    <button class="btn-del">x</button>
+                    <button class="btn-edit">✏️</button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
