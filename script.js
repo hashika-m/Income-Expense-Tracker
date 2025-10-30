@@ -112,10 +112,16 @@ function addTransaction(e){
         updateLocalStorage()                   //to upadte localstorage while adding transaction 
     }
 }
+
+
 //  uniqueId()
  function uniqueId(){
     return Math.floor(Math.random()*100)
  }
+
+
+
+
 
 
  function resetTransaction(){
