@@ -13,7 +13,7 @@ body{
 }
 .container{
     width: 800px;
-    height: 600px;
+    height: 615px;
     background-color: white;
     box-shadow: 8px 24px 20px 3px rgba(0,0,0,0.3);
     display: flex;

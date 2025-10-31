@@ -25,13 +25,13 @@
                 
             </div>
             <form  action="#" id="form">
-                <!-- <div class="type-selection">
-                    <input type="radio" name="type" value="income" id="inc" checked> Income
-                    <input type="radio" name="type" value="expense" id="exp"> Expense
-                </div> -->
+                <div class="radio-group">
+                 <label><input type="radio" name="type" id="inc-type" value="income" checked /> Income</label>
+                  <label><input type="radio" name="type" id="exp-type" value="expense" /> Expense</label>
+               </div>
                     <label for="desc">Description</label>
                     <input type="text" name="desc" id="desc" placeholder="Enter Description" >
-                    <label for="amount">Amount</label>(eg:income: 100,expense: -100)
+                    <label for="amount">Amount</label>
                     <input type="number" name="amount" id="amount" placeholder="Enter Amount" >
                     <div class="buttons">
                         <button class="Submit-btn"   type="submit">Add transaction</button>

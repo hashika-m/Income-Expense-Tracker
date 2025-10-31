@@ -38,7 +38,6 @@ function loadTransactionDetails(transaction){
     item.innerHTML =`
      ${transaction.description}
      <span>${sign} ${Math.abs(transaction.amount)}</span>
-     <button class="btn-edit">✏️</button>
      <button class="btn-del" onclick='removeTrans(${transaction.id})'>x</button>
     `
     transcationList.appendChild(item)
@@ -88,29 +87,38 @@ function updateAmount(){
 // read: clear the pg when loaded and read the dummy data--> store in transactionList varaiable
 function config(){
     transcationList.innerHTML=''
-    transactions.forEach(loadTransactionDetails)  // items in transaction will itterated and added into loadtransactiondetail 
+    transactions.forEach(loadTransactionDetails)  // items in transaction will itterated and added into loadtransaction detail 
    //   calling updateAmount() to get updated whenever the pg gets loaded
     updateAmount()
 }
 
-function addTransaction(e){
-    e.preventDefault()  //the e is represent the event after entering the inputs and submitting the form, will make the value to visible in link. So this e.preventDefault() helps not to visible the inputs in link, given by user
-    if(description.value.trim()==''||amount.value.trim()==''){
-        alert('Please enter the description and amount to proceed further!!')  //checksfor input field and gives a alert
-    }
-    else{
-        const transaction = {                  //the given input description &amount is stored with the given id in transaction varialbe
-            id:uniqueId(),                     //creating uniqueId() to give id values
-            description:description.value,
-            amount:+amount.value
-        }
-        transactions.push(transaction)         // transaction variable with input details is added intothe transactions[] created
-        loadTransactionDetails(transaction)    // transaction variable containing new-added items is loaded into loadTransactionDetail() to display in viewport
-        description.value='';                  // after displaying the description and amount input fields is set to emput(reset)
-        amount.value='';
-        updateAmount()                         //based on inputs the amount of the balance, income, expense is updated
-        updateLocalStorage()                   //to upadte localstorage while adding transaction 
-    }
+// Add new transaction (income/expense chosen by radio)
+function addTransaction(e) {
+  e.preventDefault();
+
+  const selectedType = document.querySelector('input[name="type"]:checked').value;
+
+  if (description.value.trim() === '' || amount.value.trim() === '') {
+    alert('Please enter both description and amount!');
+    return;
+  }
+
+  let amtValue = +amount.value;
+  if (selectedType === 'expense') amtValue = -Math.abs(amtValue); // negative for expense
+
+  const transaction = {
+    id: uniqueId(),
+    description: description.value,
+    amount: amtValue,
+  };
+
+  transactions.push(transaction);
+  updateLocalStorage();
+  loadTransactionDetails(transaction);
+  updateAmount();
+
+  description.value = '';
+  amount.value = '';
 }
 
 
@@ -119,17 +127,13 @@ function addTransaction(e){
     return Math.floor(Math.random()*100)
  }
 
-
-
-
-
-
+//Reset function
  function resetTransaction(){
     transactions=[]
     balance.textContent='0.00'
     incomeAmount.textContent='0.00'
     expenseAmount.textContent='0.00'
-
+    localStorage.removeItem('trans');
     
     config()
  }
